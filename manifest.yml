@@ -1,0 +1,12 @@
+---
+applications:
+ - name: rcastan-video-index-service
+   domain: mybluemix.net
+   host: rcastan-video-index-service
+   memory: 256M
+   disk_quota: 1024M
+   services:
+   - rcastan-video-index-service-cloudantNoSQLDB
+
+
+
