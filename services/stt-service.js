@@ -1,4 +1,4 @@
-require('dotenv').config({path: '../.env'});
+require('dotenv').config();
 
 var fs = require('fs');
 
@@ -14,7 +14,7 @@ var stt = new Speech_to_text({
 
 var params = {
     model: 'en-US_BroadbandModel',
-    content_type: 'audio/mp3',
+    content_type: 'audio/wav',
     'interim_results': true,
     'max_alternatives': 3,
   };
@@ -24,6 +24,8 @@ var recognizeStream = stt.createRecognizeStream(params);
 module.exports = {
 
     sttFunc: (source) => {
+        console.log('Transcription Started....')
+
         fs.createReadStream(source).pipe(recognizeStream);
         
         recognizeStream.pipe(fs.createWriteStream('./transcriptions/transcription.txt'));
