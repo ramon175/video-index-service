@@ -8,7 +8,8 @@ var password = process.env.cloudant_password;
 
 var cloudant = Cloudant({
     account: username,
-    password: password
+    password: password,
+    plugin:'promises'
 });
 
 var database = cloudant.db.use('indexes');
@@ -16,6 +17,8 @@ var database = cloudant.db.use('indexes');
 
 module.exports = {
     insertTranscription: (doc) =>{
-        database.insert(doc)
+       return database.insert(doc).then((res) => {
+           console.log(res);
+       });
     }
 }

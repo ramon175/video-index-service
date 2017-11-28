@@ -12,6 +12,10 @@ module.exports = {
             sttService.sttFunc(output);
         });
 
+    },
+
+    stt: (path) => {
+        sttService.sttFunc(path);
     }
 
 }
